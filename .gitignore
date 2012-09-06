@@ -8,3 +8,6 @@ target/*
 .idea
 Main.iml
 Test.iml
+zmq-appender.iml
+zmq-appender.ipr
+zmq-appender.iws
