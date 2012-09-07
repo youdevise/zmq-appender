@@ -1,10 +1,11 @@
 package com.enstratus.logstash.layouts;
 
-import com.enstratus.logstash.data.*;
-
-import com.google.gson.*;
-import java.util.*;
+import com.enstratus.logstash.data.LoggingEventData;
+import com.google.gson.Gson;
 import org.apache.commons.lang.StringUtils;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LogstashMessage {
 
@@ -25,7 +26,7 @@ public class LogstashMessage {
     public LogstashMessage(LoggingEventData event, String source_host, String[] tags) {
         String localHost = source_host;
         if (null == localHost) {
-            localHost = new HostData().getHostName();
+            localHost = HostData.getHostName();
         }
         this.source_host = localHost;
         this.timestamp = event.time;
