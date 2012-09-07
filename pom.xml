@@ -9,8 +9,8 @@
 
 	<distributionManagement>
 		<repository>
-			<id>nexus-site</id>
-			<url>http://repo/nexus</url>
+			<id>productstore</id>
+			<url>http://repo.youdevise.com:8081/nexus/content/repositories/yd-release-candidates</url>
 		</repository>
 	</distributionManagement>
 
