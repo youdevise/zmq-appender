@@ -3,11 +3,6 @@ package com.enstratus.logstash.layouts;
 import com.enstratus.logstash.data.*;
 import com.google.gson.*;
 
-import java.net.UnknownHostException;
-import java.util.*;
-import org.apache.commons.lang.StringUtils;
-import sun.net.idn.StringPrep;
-
 public class JSONMessage {
 
     public String identity;
