@@ -6,6 +6,14 @@
 	<version>0.4.0</version>
 	<name>Logstash ZMQ Appender</name>
 	<description>log4j zmq appender for use with logstash. based on logcentric</description>
+
+	<distributionManagement>
+		<repository>
+			<id>nexus-site</id>
+			<url>http://repo/nexus</url>
+		</repository>
+	</distributionManagement>
+
 	<build>
 		<plugins>
 			<plugin>
