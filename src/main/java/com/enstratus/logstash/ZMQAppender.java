@@ -105,7 +105,7 @@ public class ZMQAppender extends AppenderBase<ILoggingEvent> {
         // note that AppenderBase.doAppend will invoke this method only if
         // this appender was successfully started.
 
-        String logLine = "";
+        String s = "";
 
         try {
             this.encoder.doEncode(loggingevent);
@@ -115,11 +115,12 @@ public class ZMQAppender extends AppenderBase<ILoggingEvent> {
             addError("Failed to write to the console");
         }
 
-        System.out.println(logLine);
+        System.out.println(s);
 
         //code from old log4j implmentation
         final LoggingEventData data = new LoggingEventData(loggingevent);
         String messageFormat = getEventFormat();
+        String logLine = "";
 
         String identifier = getIdentity();
         String[] tagz;

@@ -1,37 +1,18 @@
 package com.enstratus.logstash.layouts;
 
-import com.enstratus.logstash.data.LoggingEventData;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.enstratus.logstash.data.*;
+import com.google.gson.*;
+
+import java.net.UnknownHostException;
+import java.util.*;
+import org.apache.commons.lang.StringUtils;
+import sun.net.idn.StringPrep;
 
 public class JSONMessage {
 
     public String identity;
     public String[] tags;
     public LoggingEventData eventData;
-
-    public JSONMessage(LoggingEventData event, String identity, String[] tags) {
-        String localHost = identity;
-
-        this.eventData = event;
-
-        if (null == localHost) {
-            localHost = HostData.getHostName();
-            // inject the identity
-        }
-        this.identity = localHost;
-
-        if (!(null == tags)) {
-            this.tags = tags;
-        }
-
-    }
-
-    public JSONMessage() {
-
-    }
 
     public LoggingEventData getEventData() {
         return eventData;
@@ -57,6 +38,26 @@ public class JSONMessage {
         this.tags = tags;
     }
 
+    public JSONMessage() {
+
+    }
+
+    public JSONMessage(LoggingEventData event, String identity, String[] tags) {
+        String localHost = identity;
+
+        this.eventData = event;
+
+        if (null == localHost) {
+            localHost = new HostData().getHostName();
+            // inject the identity
+        }
+        this.identity = localHost;
+
+        if (!(null == tags)) {
+            this.tags = tags;
+        }
+
+    }
 
     public String toJson() {
         String ident = this.getIdentity();
@@ -70,7 +71,7 @@ public class JSONMessage {
         ed.addProperty("identity", ident);
 
         if (!(null == tagz)) {
-            JsonElement o = (JsonElement) parser.parse(new Gson().toJson(tags));
+            JsonElement o = (JsonElement)parser.parse(new Gson().toJson(tags));
             ed.add("tags", o);
         }
 
